@@ -1,70 +1,105 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>CAISHENB - 财神币</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财神币 (CSB/CAISHENB)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
             overflow: hidden;
         }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        .content {
-            padding: 20px;
-            background: #fff;
-        }
-        .content h2 {
-            color: #333;
-        }
-        .content p {
-            line-height: 1.6;
-        }
-        .footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
             position: relative;
-            bottom: 0;
+        }
+        .image-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        .image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, opacity 0.5s;
+            opacity: 0;
+        }
+        .image-container img.active {
+            opacity: 1;
+        }
+        .slogan {
+            position: absolute;
+            bottom: 10%;
             width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            animation: fadeInUp 2s ease-in-out infinite alternate;
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>财神币介绍</h1>
+    <div class="container">
+        <div class="image-container">
+            <img src="img/image1.jpg" alt="宣传图1" class="active">
+            <img src="img/image2.jpg" alt="宣传图2">
+            <img src="img/image3.jpg" alt="宣传图3">
+            <img src="img/image4.jpg" alt="宣传图4">
+            <img src="img/image5.jpg" alt="宣传图5">
+            <img src="img/image6.jpg" alt="宣传图6">
+            <img src="img/image7.jpg" alt="宣传图7">
+            <img src="img/image8.jpg" alt="宣传图8">
+            <img src="img/image9.jpg" alt="宣传图9">
+            <img src="img/image10.jpg" alt="宣传图10">
         </div>
-    </header>
-    <div class="container content">
-        <h2>什么是财神币？</h2>
-        <p>财神币是一种虚拟货币，象征着财富和好运。它通常在中国文化中与财神节联系在一起，人们相信拥有财神币可以带来财富和好运。</p>
-        <h2>财神币的特点</h2>
-        <ul>
-            <li>数字货币：财神币是一种基于区块链技术的数字货币。</li>
-            <li>安全性高：使用先进的加密技术保护用户的资产安全。</li>
-            <li>流通性：可以在多个平台上进行交易和使用。</li>
-        </ul>
-        <h2>如何获取财神币？</h2>
-        <p>用户可以通过参与特定的活动、交易或者挖矿来获取财神币。</p>
+        <div class="slogan" id="slogan">体验财神币，财富随手可得！</div>
     </div>
-    <footer class="footer">
-        <p>版权所有 &copy; 2024 财神币团队</p>
-    </footer>
+    <script>
+        const images = document.querySelectorAll('.image-container img');
+        let currentIndex = 0;
+        const slogans = [
+            '体验财神币，财富随手可得！',
+            '进入《财神》，开启财富新世界！',
+            '财神币，游戏与财富的完美结合！',
+            '在《财神》中获得无尽财富！',
+            '财富与娱乐并行，尽在CSB！',
+            '游戏乐趣与财富并存，加入我们！',
+            'CSB，改变你对财富的定义！',
+            '玩转《财神》，收获无尽财富！',
+            'CSB：你的财富新机遇！',
+            '虚拟财富，真实收益，尽在CSB！'
+        ];
+
+        function updateImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+            document.getElementById('slogan').innerText = slogans[currentIndex];
+        }
+
+        setInterval(updateImage, 3000);
+    </script>
 </body>
 </html>
